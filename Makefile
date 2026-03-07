@@ -16,6 +16,6 @@ $(TARGET): $(OBJ)
 	gcc -o $@ $?
 
 obj/%.o : src/%.c
-	gcc -g -c $< -o $@ -Iinclude
+	gcc -g -c $< -o $@ -Iinclude -Werror
 
 
