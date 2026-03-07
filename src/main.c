@@ -19,10 +19,11 @@ int main(int argc, char *argv[]) {
     bool newfile = false;
     int c = 0;
     int dbfd = -1;
+    
+    struct dbheader_t *dbhdr = NULL;
+    
 
-    struct dbhdr_t *header = NULL;
-
-    while (c = getopt(argc, argv, "nf:") != -1) {
+    while ((c = getopt(argc, argv, "nf:")) != -1) {
         switch(c) {
             case 'f':
                 filepath = optarg;
@@ -31,7 +32,7 @@ int main(int argc, char *argv[]) {
                 newfile = true;
                 break;
             case '?':
-                printf("Unknown option -%\c\n", c);
+                printf("Unknown option -%c\n", c);
                 break;
             default:
                 return -1;
@@ -73,5 +74,5 @@ int main(int argc, char *argv[]) {
 
     output_file(dbfd, dbhdr);
 
-    return 0
+    return 0;
 }
