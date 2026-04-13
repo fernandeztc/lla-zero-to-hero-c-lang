@@ -27,10 +27,10 @@ size_t hash(char *val, int capacity) {
 // returns: the index of the key, otherwise on
 // error, returns -1 or not found return -2
 
-int kv_put(kv_t *db, char *key, char *value) {
+int kv_put(kv_t *db, const char *key, const char *value) {
   if (!db || !key || !value) return -1;
 
-  size_t idx = hash(key, db->capacity);
+  size_t idx = hash((char*)key, db->capacity);
 
   for (int i=0; i < db->capacity - 1; i++) {
     size_t real_idx = (idx + i) % db->capacity;
