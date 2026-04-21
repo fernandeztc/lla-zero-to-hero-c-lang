@@ -78,7 +78,7 @@ int kv_delete(kv_t *db, const char *key) {
         entry->key = (void*)TOMBSTONE;
         entry->value = NULL;
         
-        return real_idx;
+        return 0;
     }
   }
 

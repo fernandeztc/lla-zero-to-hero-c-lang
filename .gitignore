@@ -1,1 +1,4 @@
 .DS_Store
+vgcore.*
+bin/
+bin/test
