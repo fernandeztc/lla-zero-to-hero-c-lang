@@ -130,6 +130,34 @@ int kv_put(kv_t *db, const char *key, const char *value) {
   return -2;
 }
 
+// fn kv_free
+// params: 
+//   - db: a pointer to the db
+// returns: 0 on success or -1
+// on failure
+
+int kv_free(kv_t *db) {
+  if (!db) return -1;
+
+  for (int i=0; i < db->capacity-1; i++) {
+    kv_entry_t *e = &db->entries[i];
+
+    if (e->key && e->key != (void*)TOMBSTONE) {
+      free(e->key);
+      free(e->value);
+      e->key = NULL;
+      e->value = NULL;
+      db->count--;
+    }
+  }
+
+  free(db->entries);
+  free(db);
+
+  return 0;
+
+}
+
 kv_t *kv_init(size_t capacity) {
   if (capacity == 0) return NULL;
   

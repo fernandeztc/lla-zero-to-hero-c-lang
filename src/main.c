@@ -30,4 +30,6 @@ int main() {
   val = kv_get(table, "hehe");
 
   printf("%s %s %s\n", val, val2, val3);
+
+  kv_free(table);
 }
