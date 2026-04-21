@@ -107,6 +107,7 @@ int kv_put(kv_t *db, const char *key, const char *value) {
     if (entry->key && entry->key != (void*)TOMBSTONE && 
         !strcmp(entry->key, key)) {
       char *newval = strdup(value);
+      free(entry->value);
       if (!newval) return -1;
       entry->value = newval;
       return 0;
