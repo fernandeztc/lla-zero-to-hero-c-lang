@@ -1,6 +1,8 @@
 #ifndef KV_H
 #define KV_H
 
+#define TOMBSTONE ((char *)0x1)
+
 #include <stdlib.h>
 
 typedef struct {
