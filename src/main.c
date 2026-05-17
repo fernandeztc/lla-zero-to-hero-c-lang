@@ -39,6 +39,10 @@ int main() {
   kv_put(db, "city", "berlin");
 
   assert(kv_delete(db, "name") == 0);
+  //assert(kv_delete(db, "name") == -1);
+  assert(kv_put(db, "name", "alice") == 0);
+  assert(kv_delete(db, "name") == 0);
+  assert(kv_delete(db, NULL) == -1);
   assert(kv_get(db, "name") == NULL);
   assert(db->count == 1);
 

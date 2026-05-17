@@ -93,7 +93,7 @@ int kv_delete(kv_t *db, const char *key) {
 // returns: the index of the key, otherwise on
 // error, returns -1 or not found return -2
 
-int kv_put(kv_t *db, const char *key, const char *value) {
+int kv_put(kv_t *db, char *key, char *value) {
   if (!db || !key || !value) return -1;
 
   size_t idx = hash((char*)key, db->capacity);
