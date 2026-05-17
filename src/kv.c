@@ -136,7 +136,7 @@ int kv_put(kv_t *db, char *key, char *value) {
 // on failure
 
 void kv_free(kv_t *db) {
-  // if (!db) return -1;
+  if (!db) return;
 
   for (int i=0; i < db->capacity-1; i++) {
     kv_entry_t *e = &db->entries[i];
